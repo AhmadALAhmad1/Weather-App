@@ -28,7 +28,7 @@ const Weather = ({ data }: WeatherProps) => {
     case 'Clear':
       WeatherSVG = Sun;
       break;
-    case 'Thunder':
+    case 'Thunderstorm':
       WeatherSVG = Thunder;
       break;
     case 'Rain':

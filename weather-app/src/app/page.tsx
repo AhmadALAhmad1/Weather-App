@@ -95,8 +95,6 @@ const Home: React.FC = () => {
           forecast: filteredForecast,
         }));
         setLoading(false);
-        // Blur the input field to hide the keyboard
-        document.getElementById('city-input')?.blur();
       })
       .catch((error) => {
         console.error('Error fetching weather data:', error);
@@ -136,47 +134,47 @@ const Home: React.FC = () => {
   // console.log(city);
 
   return (
-      <div id=' nc-main main-container' className='bg-cc pb-2'>
-        <div className='bg-animation bg-blue-600/25'>
-          <div id='stars'></div>
-          <div id='stars2'></div>
-        </div>
-        <div className='relative top-5 items-center justify-center'>
-          <div className='flex flex-col items-center justify-center px-2'>
-            <form
-              onSubmit={fetchWeather}
-              className='flex items-center justify-center rounded-3xl border-2 p-2 px-2 sm:px-4'
-            >
-              <input
-              id='city-input'
-                onChange={(e) => setCity(e.target.value)}
-                className='border-none bg-transparent text-lg text-white focus:outline-none sm:text-2xl'
-                type='text'
-                // value={city}
-                placeholder='Search city'
-              />
-              <button
-                className='rounded-full bg-cyan-500 p-2 opacity-90 duration-300 hover:scale-105'
-                onClick={fetchWeather}
-              >
-                <IoSearch size={25} className='' />
-              </button>
-            </form>
-            {loading ? (
-              <Loader />
-            ) : weather ? (
-              <>
-                <Weather data={weather.weather} />
-              </>
-            ) : null}
-          </div>
-          {weather.forecast && (
-            <div className='no-scrollbar mx-2 mb-5 mt-6 flex items-center justify-center sm:mb-0 sm:mt-4'>
-              <WeeklyWeatherCard data={weather.forecast.list} />
-            </div>
-          )}
-        </div>
+    <div id=' nc-main main-container' className='bg-cc pb-2'>
+      <div className='bg-animation bg-blue-600/25'>
+        <div id='stars'></div>
+        <div id='stars2'></div>
       </div>
+      <div className='relative top-5 items-center justify-center'>
+        <div className='flex flex-col items-center justify-center px-2'>
+          <form
+            onSubmit={fetchWeather}
+            className='flex items-center justify-center rounded-3xl border-2 p-2 px-2 sm:px-4'
+          >
+            <input
+              onChange={(e) => setCity(e.target.value)}
+              className='group border-none bg-transparent text-lg text-white focus:outline-none sm:text-2xl'
+              type='text'
+              // value={city}
+              placeholder='Search city'
+            />
+            <button
+              className='rounded-full bg-cyan-500 p-2 opacity-90 duration-300 hover:scale-105'
+              onClick={fetchWeather}
+            >
+              <IoSearch size={25} className='' />
+            </button>
+          </form>
+
+          {loading ? (
+            <Loader />
+          ) : weather ? (
+            <>
+              <Weather data={weather.weather} />
+            </>
+          ) : null}
+        </div>
+        {weather.forecast && (
+          <div className='no-scrollbar mx-2 mb-5 mt-6 flex items-center justify-center sm:mb-0 sm:mt-4'>
+            <WeeklyWeatherCard data={weather.forecast.list} />
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
