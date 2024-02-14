@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
-  title: 'My Weather App',
+  title: 'Weather App',
   description:
     'A user-friendly weather application with hourly forecast display, designed for all screen sizes.',
   keywords: 'weather app, hourly forecast, weather, weather forecast',

@@ -63,12 +63,11 @@ const Home: React.FC = () => {
   const apiKey = process.env.NEXT_PUBLIC_WEATHER_KEY;
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
-
   const fetchWeather = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
+    
     const trimmedCity = city.trim();
-
+  
     // Check if the trimmed city is empty
     if (!trimmedCity) {
       toast.error('Please fill in the input field first.', {
@@ -79,6 +78,13 @@ const Home: React.FC = () => {
       });
       return;
     }
+  
+    // Hide keyboard on mobile devices
+    const inputElement = document.activeElement as HTMLInputElement;
+    if (inputElement) {
+      inputElement.blur();
+    }
+  
     setLoading(true);
     axios
       .get(weatherUrl)
@@ -104,10 +110,11 @@ const Home: React.FC = () => {
           closeOnClick: true,
           draggable: true,
         });
-
+  
         setLoading(false);
       });
   };
+  
 
   // useEffect(() => {
   //   if ('geolocation' in navigator) {
