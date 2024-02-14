@@ -6,7 +6,7 @@ import Weather from './components/Weather';
 import Loader from './components/Loader';
 import './globals.css';
 import WeeklyWeatherCard from './components/DailyWeatherCard';
-import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 interface WeatherData {
   weather: WeatherCondition[];
@@ -38,7 +38,7 @@ interface Forecast {
 
 interface WeatherState {
   weather: WeatherData;
-  forecast?: ForecastData; // Optional property
+  forecast?: ForecastData; 
 }
 
 export default function Home() {
@@ -74,7 +74,7 @@ export default function Home() {
       })
       .then((response) => {
         const filteredForecast = {
-          list: response.data.list.slice(0, 6), // Take only the first 6 elements
+          list: response.data.list.slice(0, 6),
         };
         setWeather((prevState) => ({
           ...prevState,
