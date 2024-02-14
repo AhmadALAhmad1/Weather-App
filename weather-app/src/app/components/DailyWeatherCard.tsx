@@ -1,4 +1,6 @@
+'use client'
 import React from 'react';
+import { motion } from 'framer-motion';
 import Sun from '../../../public/svgs/sun';
 import Thunder from '../../../public/svgs/thunder';
 import Rain from '../../../public/svgs/rain';
@@ -48,6 +50,11 @@ const WeeklyWeatherCard: React.FC<Props> = ({ data }) => {
           index: React.Key | null | undefined
         ) => {
           let WeatherSVG;
+          let animationProps = {
+            initial: { opacity: 0, y: -20 },
+            animate: { opacity: 1, y: 0 },
+            transition: { duration: 0.5 },
+          };
 
           switch (day.weather[0].main) {
             case 'Clear':
@@ -80,14 +87,15 @@ const WeeklyWeatherCard: React.FC<Props> = ({ data }) => {
           }
 
           return (
-            <div
+            <motion.div
               key={index}
-              className='flex w-72 flex-col items-center gap-2 rounded-xl bg-neutral-600/60 p-8 sm:w-auto sm:p-6 '
+              className='flex w-72 flex-col items-center gap-2 rounded-xl bg-neutral-600/60 p-8 sm:w-auto sm:p-6'
+              {...animationProps}
             >
               <WeatherSVG className='text-[0.8rem]' />
               <p>{formatTime(day.dt_txt)}</p>
               <p>{day.main.temp}°C</p>
-            </div>
+            </motion.div>
           );
         }
       )}

@@ -88,13 +88,13 @@ const Weather = ({ data }: WeatherProps) => {
         <div className='py-7'>
           <WeatherSVG className='text-[1.6rem]' />
         </div>
-        <div className='mt-5 justify-self-end sm:mt-5'>
+        <div className='mt-2 justify-self-end sm:mt-5'>
           <p className='text-5xl font-bold sm:text-6xl'>
             {data.main.temp.toFixed(0)}&#176;
           </p>
         </div>
       </div>
-      <div className='mt-2 flex justify-center text-center text-3xl sm:mt-0'>
+      <div className='mt-3 flex justify-center text-center text-3xl sm:mt-0'>
         <p className='rounded-full bg-neutral-800 p-3 px-6 font-bold'>
           {data.weather[0].main}
         </p>
